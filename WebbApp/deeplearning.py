@@ -35,16 +35,16 @@ def object_detection(path, filename):
     # Convert into bgr
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     cv2.imwrite(
-        '/Users/asik/Desktop/ANPR/WebbApp/static/predict/{}'.format(filename), image_bgr)
+        'WebbApp/static/predict/{}'.format(filename), image_bgr) # /Users/asik/Desktop/ANPR/
     return coords
 
 
 def save_text(filename, text):
     name, ext = os.path.splitext(filename)
-    with open('/Users/asik/Desktop/ANPR/WebbApp/static/predict/{}.txt'.format(name), mode='w') as f:
+    with open('WebbApp/static/predict/{}.txt'.format(name), mode='w') as f:
         f.write(text)
     f.close()
-
+    #/Users/asik/Desktop/ANPR/
 
 def OCR(path, filename):
     img = np.array(load_img(path))
@@ -55,7 +55,7 @@ def OCR(path, filename):
     gray = cv2.cvtColor(roi_bgr, cv2.COLOR_BGR2GRAY)
     magic_color = apply_brightness_contrast(gray, brightness=40, contrast=70)
     cv2.imwrite(
-        '/Users/asik/Desktop/ANPR/WebbApp/static/roi/{}'.format(filename), roi_bgr)
+        'WebbApp/static/roi/{}'.format(filename), roi_bgr)
 
     text = pt.image_to_string(magic_color, lang='eng', config='--psm 6')
     print(text)
